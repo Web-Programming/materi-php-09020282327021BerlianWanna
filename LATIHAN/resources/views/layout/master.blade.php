@@ -6,18 +6,20 @@
     <title>@yield('tittle') </title>
 </head>
 <body>
- <!-- ini bagian header -->
-  @include('layout.header')
+    <!-- ini bagian header -->
+    @include('layout.dashboard')
+    
+    <!-- ini bagian header -->
+    @include('layout.header')
 
-
- <!-- ini bagian side bar -->
+    <!-- ini bagian side bar -->
     @include('layout.sidebar')
 
- <!-- ini bagian Content-->
- @yield('content')
+    <!-- ini bagian Content-->
+    @yield('content')
 
- <!-- ini bagian footer -->
- @include('layout.footer')
+    <!-- ini bagian footer -->
+    @include('layout.footer')
 
 </body>
 </html>

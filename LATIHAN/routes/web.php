@@ -19,3 +19,4 @@ Route::get('/berita/{id}/{judul?}', function ($id, $judul = judul) {
 });
 
 Route::get('/prodi/index', [ProdiController::class, 'index']);
+Route::get('/prodi/create', [ProdiController::class, 'create']);
