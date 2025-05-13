@@ -3,12 +3,16 @@
 @section('title', 'Tambah Program Studi')
 
 @section('content')
-    <form action="{{ route('prodi.store') }}" method="POST">
-        @csrf
-        <div class="form-group">
-            <label for="nama_prodi">Nama Prodi</label>
-            <input type="text" name="nama_prodi" id="nama_prodi" class="form-control" placeholder="Masukkan nama prodi">
-        </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </form>
+   <form method="post" action="{{ url(path: 'post') }}">
+  @csrf
+  <div class="mb-3">
+    <label>Nama Prodi</label>
+    <input type="text" name="nama_prodi" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label>Kode Prodi</label>
+    <input type="text" name="kode_prodi" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Simpan</button>
+</form>
 @endsection

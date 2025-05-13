@@ -30,7 +30,7 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
