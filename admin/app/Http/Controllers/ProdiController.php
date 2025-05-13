@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Prodi;
 
 class ProdiController extends Controller
 {
@@ -11,15 +12,17 @@ class ProdiController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $listProdi = Prodi::get();
+         return view('prodi.index',
+        ['listprodi' => $listProdi]
+    );}
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+          return view('prodi.create');
     }
 
     /**
