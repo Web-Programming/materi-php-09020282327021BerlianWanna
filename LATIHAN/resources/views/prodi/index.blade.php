@@ -65,21 +65,24 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ( $listprodi as $prodi)
-                          <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $prodi->nama }}</td>
-                            <td>{{ $prodi->kode_prodi }}</td>
-                            <td>
-                              <a href="{{ url('prodi/'.$prodi->id.'/edit') }}" >Edit</a>
-                              <form action="{{ url('prodi/'.$prodi->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-link">Delete</button>
-                              </form>
-                            </td>
-                          </tr>
-                        @endforeach
+                        
+            @foreach ($listprodi as $prodi )
+            
+
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $prodi->nama}}</td>
+                    <td>{{ $prodi->kode_prodi }}</td>
+                    <td>
+                        <a href="{{ route('prodi.edit', $prodi->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('prodi.destroy', $prodi->id) }}" method="POST" style="display:inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
                       </tbody>                 
                     </table>
 
