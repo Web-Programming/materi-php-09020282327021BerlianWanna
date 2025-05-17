@@ -4,6 +4,13 @@
 
 @section('content')
     <p>Ini Halaman Prodi</p>
+
+    @if(session('status'))
+    <div class = "alert alert-success">
+        {{session('status') }}
+    </div>
+    @endif
+    
      <a href="{{url('prodi/create')}}" class="btn btn-success">+ add prodi</a>
     <table class="table table-bordered mt-3">
         

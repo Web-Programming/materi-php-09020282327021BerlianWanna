@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prodi;
 use Illuminate\Http\Request;
+use App\Models\Prodi;
 
 class ProdiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index() {
-        $listprodi = Prodi::get();
-        return view("prodi.index", 
-        ['listprodi' => $listprodi]
-        );
-    }
+    public function index()
+    {
+        $listProdi = Prodi::get();
+         return view('prodi.index',
+        ['listprodi' => $listProdi]
+    );}
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view("prodi.create");
+          return view('prodi.create');
     }
 
     /**
@@ -30,7 +30,18 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+           $validateData = $request -> validate(
+            ['nama' => 'required|min:5|max:20',
+             'kode_prodi' => 'required|min:2|max:2'
+           ]);
+
+           $prodi = new Prodi();
+           $prodi -> nama = $validateData['nama']; // $request->nama (belum aman)
+           $prodi->kode_prodi= $validateData['kode_prodi'];
+           $prodi -> save();
+
+           return redirect("prodi")->with("status",
+           "Data Program Studi Berhasil Disimpan");
     }
 
     /**

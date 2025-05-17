@@ -21,5 +21,9 @@ class ProdiSeeder extends Seeder
         'nama' => "Informatika",
         'kode_prodi' => "IF",
        ]);
+       Prodi::create([
+        'nama' => "Management",
+        'kode_prodi' => "MG",
+       ]);
     }
 }
