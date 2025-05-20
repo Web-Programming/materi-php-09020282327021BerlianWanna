@@ -34,6 +34,14 @@
                     <td>{{ $prodi->nama}}</td>
                     <td>{{ $prodi->kode_prodi }}</td>
                     <td>
+                        @if($prodi->logo)
+                            <img src="{{ asset('images/' . $prodi->logo) }}" alt="Logo" width="80">
+                        @else
+                            <span class="text-muted">Tidak ada logo</span>
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('prodi.show', $prodi->id) }}" class="btn btn-sm btn-info">Detail</a>
                         <a href="{{ route('prodi.edit', $prodi->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <form action="{{ route('prodi.destroy', $prodi->id) }}" method="POST" style="display:inline-block;">
                             @csrf
@@ -41,6 +49,7 @@
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</button>
                         </form>
                     </td>
+
                 </tr>
             @endforeach
         </tbody>

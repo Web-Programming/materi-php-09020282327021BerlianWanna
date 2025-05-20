@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title', 'Create Program Studi')
+@section('title', 'Edit Program Studi')
 
 @section('content')
 <!--begin::App Content Header-->
@@ -12,7 +12,7 @@
         <ol class="breadcrumb float-sm-end">
           <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
           <li class="breadcrumb-item"><a href="{{ url('/prodi') }}">Program Studi</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Create</li>
+          <li class="breadcrumb-item active" aria-current="page">Edit</li>
         </ol>
       </div>
     </div>
@@ -28,7 +28,7 @@
         <!-- Card -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Create Program Studi</h3>
+            <h3 class="card-title">Edit Program Studi</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
                 <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
@@ -41,35 +41,29 @@
           </div>
           <div class="card-body">
             <!-- Form Start -->
-            <form method="POST" action="{{ url('/prodi') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('/prodi/' . $prodi->id) }}">
               @csrf
+              @method('PUT')
               <div class="mb-3">
                 <label for="nama" class="form-label">Nama Prodi</label>
-                <input type="text" id="nama" name="nama" class="form-control @error('nama') is-invalid @enderror" required>
+                <input type="text" id="nama" name="nama" value="{{ old('nama', $prodi->nama) }}" class="form-control @error('nama') is-invalid @enderror" required>
                 @error('nama')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
               <div class="mb-3">
                 <label for="kode_prodi" class="form-label">Kode Prodi</label>
-                <input type="text" id="kode_prodi" name="kode_prodi" class="form-control @error('kode_prodi') is-invalid @enderror" required>
+                <input type="text" id="kode_prodi" name="kode_prodi" value="{{ old('kode_prodi', $prodi->kode_prodi) }}" class="form-control @error('kode_prodi') is-invalid @enderror" required>
                 @error('kode_prodi')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
-             <div class="mb-3">
-                <label for="logo" class="form-label">Logo</label>
-                <input type="file" name="logo" id="logo" class="form-control @error('logo') is-invalid @enderror">
-                @error('logo')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="submit" class="btn btn-primary">Update</button>
               <a href="{{ url('/prodi') }}" class="btn btn-secondary">Batal</a>
             </form>
             <!-- Form End -->
           </div>
-          <div class="card-footer text-muted">Silakan isi data program studi dengan benar.</div>
+          <div class="card-footer text-muted">Silakan perbarui data program studi dengan benar.</div>
         </div>
       </div>
     </div>
