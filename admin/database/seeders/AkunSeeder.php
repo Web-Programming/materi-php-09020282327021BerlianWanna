@@ -14,12 +14,12 @@ class AkunSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("users") -> insert([
-            'name' => 'Administrator',
-            'email' => 'Admin@gmail.com',
-            'password' => Hash::make("87654321"),
-            'level' => 'admin',
-        ]);
+       DB::table("users")->insert([
+    'name' => 'Administrator',
+    'email' => 'Admin@gmail.com',
+    'password' => Hash::make("87654321"),
+    'level' => 'admin',
+]);
 
     }
 }

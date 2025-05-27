@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Prodi;
+use Illuminate\Support\Facades\Gate;
 
 class ProdiController extends Controller
 {
@@ -11,17 +12,21 @@ class ProdiController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $listProdi = Prodi::get();
-         return view('prodi.index',
-        ['listprodi' => $listProdi]
-    );}
+{
+    Gate::authorize('viewAny', Prodi::class);
 
+    $listProdi = Prodi::get();
+
+    return view('prodi.index', [
+        'listprodi' => $listProdi
+    ]);
+}
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+         Gate::authorize('create', Prodi::class);
           return view('prodi.create');
     }
 
@@ -30,6 +35,7 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', Prodi::class);
           $validateData = $request->validate([
         'nama' => 'required|min:5|max:200',
         'kode_prodi' => 'required|min:2|max:2',
@@ -60,6 +66,8 @@ class ProdiController extends Controller
      */
     public function show(string $id)
     {
+         Gate::authorize('view', Prodi::class);
+
          $prodi = Prodi::findOrFail($id);
         return view('prodi.show', compact('prodi'));
     }
@@ -69,6 +77,8 @@ class ProdiController extends Controller
      */
     public function edit(string $id)
     {
+         Gate::authorize('update', Prodi::class);
+
          $prodi = Prodi::findOrFail($id);
     return view('prodi.edit', compact('prodi'));
     }
@@ -97,6 +107,8 @@ class ProdiController extends Controller
      */
     public function destroy(string $id)
     {
+         Gate::authorize('delete', Prodi::class);
+
         $prodi = Prodi::findOrFail($id);
         $prodi->delete();
 

@@ -49,8 +49,10 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+
+                  @can('viewAny', App\Models\Prodi::class)
                   <li class="nav-item">
-                    <a href="{{ url("/prodi") }}" class="nav-link">
+                    <a href="{{ url(Auth::path"/prodi") }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>List Prodi</p>
                     </a>
