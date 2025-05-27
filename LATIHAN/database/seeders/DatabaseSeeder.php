@@ -4,10 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 use DB;
 use Hash;
-use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,20 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-     
         //menggunakan query builder
-        // DB::table("users")->insert([
-        //     'name' => 'rachmat2',
-        //     'email' => 'rachmat2@gmail.com',
+        // DB::table("users") -> insert([
+        //     'name' => 'Novela',
+        //     'email' => 'novelaartika@gmail.com',
         //     'password' => Hash::make("password")
-        // ]);
+        //]);
 
         DB::table("users")
-            ->where("id", 1)
-            ->update([
-                'password' => Hash::make("123456")
-            ]);
-
-        //DB::table("users")->where("id", ">", 1)->delete();    
+        ->where("id",1)
+        ->update([
+            'password' => Hash::make("12345")
+        ]);
     }
 }

@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('mahasiswas', function (Blueprint $table) {
-            $table->renameColumn("nama", "nama_mahasiswa");
-            $table->text("alamat")->after("tanggal_lahir");
+        Schema::table('users', function (Blueprint $table) {
+            $table->string("level", 50)->after("password");
         });
     }
 
@@ -22,9 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('mahasiswas', function (Blueprint $table) {
-            $table->renameColumn("nama_mahasiswa", "nama");
-            $table->removeColumn("alamat");
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn("level");
         });
     }
 };
